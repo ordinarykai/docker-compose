@@ -5,6 +5,10 @@ https://www.yuque.com/ordinarykai/notes/pp3xwo#oqUh8
 https://www.yuque.com/ordinarykai/notes/pp3xwo#noDM5  
 
 ##### docker-compose一键部署基础服务组件
+0. 创建docker-compose外部网络
+```shell
+docker network create app_net
+```
 1. 将docker-compose目录放到linux根目录  
 2. 执行如下命令启动docker-compose中所有服务  
 ```shell
