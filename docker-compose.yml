@@ -8,8 +8,8 @@ services:
     privileged: true  # 开启mysql容器特权模式，解决无权限操作文件的问题
     environment:
       - MYSQL_ROOT_PASSWORD=root  # mysql root用户密码
-    #ports: # mysql容器不开放端口，容器间通信通过别名方式
-      #- "3306:3306"
+    ports: # 生产环境下mysql容器不开放端口，容器间通信通过别名方式
+      - "3306:3306"
     volumes:
       - ./mysql/data:/var/lib/mysql # mysql数据存储目录
       - ./mysql/conf/my.cnf:/etc/mysql/my.cnf # mysql配置文件
@@ -23,8 +23,8 @@ services:
     container_name: redis
     restart: always
     privileged: true  # 开启redis容器特权模式，解决无权限操作文件的问题
-    #ports: # redis容器不开放端口，容器间通信通过别名方式
-      #- "6379:6379"
+    ports: # 生产环境下redis容器不开放端口，容器间通信通过别名方式
+      - "6379:6379"
     volumes:
       - ./redis/conf/redis.conf:/redis/redis.conf # redis配置文件
       - ./redis/data:/redis/data  # redis数据存储目录
