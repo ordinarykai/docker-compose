@@ -12,29 +12,36 @@ docker network create app_net
 1. 将docker-compose目录放到linux根目录  
 2. redis data 目录赋予77权限
 ```shell
-chmod +777 /docker-compose/reids/data
+chmod +777 /docker-compose/env/reids/data
 ```
-3. 执行如下命令启动docker-compose中所有服务  
+3. 执行如下命令启动docker-compose-env中的基础组件服务
 ```shell
-cd /docker
+cd /docker/env
+docker-compose up -d --build
 docker-compose up -d --build
 ```
 4. 查看docker-compose中所有服务
 ```shell
+cd /docker/env
 docker-compose ps
 ```
 5. 停止全部服务  
 ```shell
-cd /docker
+cd /docker/env
 docker-compose down
 ```
 6. 停止特定服务  
 ```shell
 docker stop [特定服务的容器名称]
 ```
-7. 服务端口  
+7. 基础服务端口  
 ```text
 mysql: 3306
 nginx: 80
 redis: 6379
 ```
+
+##### docker-compose一键部署java服务
+启动步骤同【docker-compose一键部署基础服务组件】  
+本次一键部署java服务只是为了测试，在app目录下，只有hello.jar  
+启动后访问http://ip:8080/hello (ip为linux的IP地址)，返回`hello,docker-compose!`即表示部署成功
