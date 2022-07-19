@@ -33,9 +33,9 @@ docker-compose down
 ```shell
 docker stop [特定服务的容器名称]
 ```
-7. 基础服务端口  
+7. 基础服务信息  
 ```text
-mysql 8.0: 3306
+mysql 8.0: 3306 root/root
 nginx: 80
 redis: 6379
 ```
