@@ -36,8 +36,8 @@ docker stop [特定服务的容器名称]
 7. 基础服务信息  
 ```text
 mysql 8.0: 3306 root/root
-nginx: 80
-redis: 6379
+nginx 7.0: 80
+redis 1.23.0: 6379
 ```
 
 ##### docker-compose一键部署java服务
