@@ -10,7 +10,7 @@ https://www.yuque.com/ordinarykai/notes/pp3xwo#noDM5
 docker network create app_net
 ```
 1. 将docker-compose目录放到linux根目录  
-2. redis data 目录赋予77权限
+2. redis data 目录赋予777权限
 ```shell
 chmod +777 /docker-compose/env/reids/data
 ```
