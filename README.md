@@ -18,7 +18,6 @@ chmod +777 /docker-compose/env/reids/data
 ```shell
 cd /docker/env
 docker-compose up -d --build
-docker-compose up -d --build
 ```
 4. 查看docker-compose中所有服务
 ```shell
@@ -36,7 +35,7 @@ docker stop [特定服务的容器名称]
 ```
 7. 基础服务端口  
 ```text
-mysql: 3306
+mysql 8.0: 3306
 nginx: 80
 redis: 6379
 ```
