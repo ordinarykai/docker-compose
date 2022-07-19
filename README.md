@@ -17,17 +17,17 @@ chmod +777 /docker-compose/env/reids/data
 3. 执行如下命令启动docker-compose-env中的基础组件服务
 ```shell
 cd /docker/env
-docker-compose up -d --build
+docker compose up -d --build
 ```
 4. 查看docker-compose中所有服务
 ```shell
 cd /docker/env
-docker-compose ps
+docker compose ps
 ```
 5. 停止全部服务  
 ```shell
 cd /docker/env
-docker-compose down
+docker compose down
 ```
 6. 停止特定服务  
 ```shell
