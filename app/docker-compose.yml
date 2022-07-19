@@ -12,8 +12,6 @@ services:
         - 'TZ="Asia/Shanghai"'  # 设置为中国时区
       ports:
         - "8080:8080"
-      volumes:
-        - ./hello/logs:/hello/logs
       depends_on:
         - mysql
         - redis
