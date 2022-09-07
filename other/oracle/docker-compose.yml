@@ -1,0 +1,16 @@
+version: '2'
+
+services:
+  oracle11g:
+    image: filemon/oracle_11g
+    container_name: oracle_11g
+    environment:
+      DBCA_TOTAL_MEMORY: 16192
+    ports:
+      - "1521:1521"
+    restart:
+      always
+
+networks:
+  oracle11gnetwork:
+    driver: 'local'

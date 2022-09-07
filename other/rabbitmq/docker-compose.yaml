@@ -1,0 +1,20 @@
+version: "3.2"
+
+services:
+  rabbitmq:
+    image: rabbitmq:3.10-management
+    container_name: rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    volumes:
+      - ./data/:/var/lib/rabbitmq/
+      - ./log/:/var/log/rabbitmq/
+    restart: always
+    networks:
+      - default
+      - app_net
+
+networks:
+  app_net:   # 连接外部网络app_net
+    external: true

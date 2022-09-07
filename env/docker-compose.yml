@@ -1,0 +1,54 @@
+﻿version: '3.1'
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: mysql
+    restart: always
+    privileged: true  # 开启mysql容器特权模式，解决无权限操作文件的问题
+    environment:
+      - MYSQL_ROOT_PASSWORD=root  # mysql root用户密码
+    ports: # 建议：生产环境下mysql容器不开放端口，容器间通信通过别名方式
+      - "3306:3306"
+    volumes:
+      - ./mysql/data:/var/lib/mysql # mysql数据存储目录
+      - ./mysql/conf/my.cnf:/etc/mysql/my.cnf # mysql配置文件
+      - ./mysql/initdb:/docker-entrypoint-initdb.d  # mysql初始化sql目录
+    networks:
+      - default
+      - app_net
+
+  redis:
+    image: redis:7.0
+    container_name: redis
+    restart: always
+    privileged: true  # 开启redis容器特权模式，解决无权限操作文件的问题
+    ports: # 建议：生产环境下redis容器不开放端口，容器间通信通过别名方式
+      - "6379:6379"
+    volumes:
+      - ./redis/conf/redis.conf:/redis/redis.conf # redis配置文件
+      - ./redis/data:/redis/data  # redis数据存储目录
+      - ./redis/log/redis.log:/redis/log/redis.log  # redis日志存储目录
+    command: redis-server /redis/redis.conf # 指定配置文件启动redis
+    networks:
+      - default
+      - app_net
+
+  nginx:
+    image: nginx:1.23.0
+    container_name: nginx
+    restart: always
+    privileged: true
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/conf/nginx.conf:/etc/nginx/nginx.conf
+      - ./nginx/html:/etc/nginx/html
+      - ./nginx/log:/var/log/nginx
+    networks:
+      - default
+      - app_net
+
+networks:
+  app_net:   # 连接外部网络app_net
+    external: true

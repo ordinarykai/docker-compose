@@ -1,0 +1,20 @@
+version: '3.1'
+
+services:
+  sentinel:
+    build:
+      context: ./ # 构建镜像的文件路径, . 当前目录
+      dockerfile: Dockerfile  # 构建镜像的文件名称
+    container_name: sentinel
+    restart: always
+    environment:
+      - 'TZ="Asia/Shanghai"'  # 设置为中国时区
+    ports:
+      - "18080:8080"
+    networks:
+      - default
+      - app_net
+
+networks:
+  app_net:   # 连接外部网络app_net
+    external: true
