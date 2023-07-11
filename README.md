@@ -12,22 +12,22 @@ docker network create app_net
 1. 将docker-compose目录放到linux根目录  
 2. redis data目录 和 redis.log文件 赋予读写权限
 ```shell
-chmod +777 /docker-compose/env/reids/data
-chmod +777 /docker-compose/env/reids/log/redis.log
+chmod +777 /docker-compose/env/redis/data
+chmod +777 /docker-compose/env/redis/log/redis.log
 ```
 3. 执行如下命令启动docker-compose-env中的基础组件服务
 ```shell
-cd /docker/env
+cd /docker-compose/env
 docker compose up -d --build
 ```
 4. 查看docker-compose中所有服务
 ```shell
-cd /docker/env
+cd /docker-compose/env
 docker compose ps
 ```
 5. 停止全部服务  
 ```shell
-cd /docker/env
+cd /docker-compose/env
 docker compose down
 ```
 6. 停止特定服务  
